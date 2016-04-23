@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var port = process.env.PORT || 3000;
 // var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 // var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 app.use(bodyParser.json());
@@ -37,8 +38,10 @@ app.post('/sendmail', function(req, res){
   });
 });
 
-app.listen(process.env.PORT || 3000);
-// app.listen(port, ipaddress, function() {
-//     console.log("Listening on port - ", port);
-//     console.log("Listening on ip address - ", ip);
-// });
+app.get('/', function(req, res) {
+  res.json({"port": port});
+})
+// app.listen(process.env.PORT || 3000);
+app.listen(port, function() {
+    console.log("Listening on port - ", port);
+});
