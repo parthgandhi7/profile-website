@@ -37,7 +37,7 @@ app.post('/sendmail', function(req, res){
   });
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 // app.listen(port, ipaddress, function() {
 //     console.log("Listening on port - ", port);
 //     console.log("Listening on ip address - ", ip);
