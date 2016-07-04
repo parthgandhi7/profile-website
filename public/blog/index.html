@@ -1,0 +1,156 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript">
+  var inviteUser = function () {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (xhttp.readyState == 4 && xhttp.status == 200) {
+        document.getElementById("demo").innerHTML = (JSON.parse(xhttp.responseText)).message;
+      }
+    };
+    var email = (document.getElementById("email")).value;
+    console.log(email);
+    var button = document.getElementById("inviteBut");
+    button.setAttribute('disabled', true);
+    // button.setAttribute('value', 'Notified');
+
+    xhttp.open("POST", "https://infinite-sierra-73925.herokuapp.com/invite/user", true);
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify({email : email}));
+  }
+</script>
+<style type="text/css">
+ /* body { 
+    background-image: url('http://www.animatedimages.org/data/media/695/animated-under-construction-image-0057.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}*/
+body {
+    background: #545154; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left top, #545154, #706e70); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #545154, #706e70); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #545154, #706e70); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #545154, #706e70); /* Standard syntax (must be last) */
+}
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%; 
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+div.anim {
+  animation-duration: 2s;
+  animation-name: slidein;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+[class*="emailText-"] {
+  width: 100%;
+}
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .col-m-1 {width: 8.33%;}
+    .col-m-2 {width: 16.66%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33%;}
+    .col-m-5 {width: 41.66%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33%;}
+    .col-m-8 {width: 66.66%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33%;}
+    .col-m-11 {width: 91.66%;}
+    .col-m-12 {width: 100%;}
+    .emailText-m {width: 80%;}
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+    .emailText {width: 40%;}
+}
+
+.notify:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+</style>
+<title>
+  My Blog
+</title>  
+</head>
+<body>
+<div class="anim">
+<div class = "row">
+<div class="col-12 col-m-12">
+<span style="font-size: 72px; color: white; text-align: center; display: block">Something awesome is coming soon!</span>
+  
+</div>
+</div>
+<div class = "row">
+<div class="col-12 col-m-12">
+<a style="font-size: 30px; color: white; text-align: center; display: block;" href="http://www.parthgandhi7.com" target="_parent">You can visit my profile here </a>
+</div>
+</div>
+<div class = "row">
+<div class="col-12 col-m-12">
+<span style="font-size: 24px; margin-top: 10px; color: white; text-align: center; display: block;">Or</span>
+</div>
+</div>
+<div class="row">
+<div class="col-12 col-m-12">
+ <span style="color:white; text-align: center; margin-top: 10px; font-size: 24px; display: block;">Enter your email to request an early invitation.
+ </span>
+
+  </div>
+</div>
+
+<div class="row">
+<div class="col-12 col-m-12">
+<span style="display: block; text-align: center;">
+<input type="email" id="email" placeholder="Enter your email here"  class="emailText emailText-m" style="border-radius: 8px; height: 40px;margin-right: -80px; margin-top: 18px;"/>
+<input type="button" id="inviteBut" class="notify" value="Notify me!" style="background-color:rgb(46, 136, 38); border-radius: 8px; height: 40px; color: white" onclick="inviteUser()" />
+</span>
+
+  </div>
+</div>
+<div class="row">
+<div class="col-12 col-m-12">
+<span id="demo" style="display: block; text-align: center; color: white; padding-top: 10px;">
+</span>
+</div>
+</div>
+</div>
+<div class="row" style="margin-top: 15px;">
+<div style="display: block; text-align: center" class="col-12 col-m-12">
+<img src="http://www.animatedimages.org/data/media/695/animated-under-construction-image-0057.gif" />
+</div>  
+</div>
+<!-- <div style="padding-left: 325px; padding-top: 100px">
+<img style="height: 250px" src="http://www.animatedimages.org/data/media/695/animated-under-construction-image-0057.gif" /></div> -->
+<!--   <a href="http://www.animatedimages.org/cat-under-construction-695.htm"><img src="http://www.animatedimages.org/data/media/695/animated-under-construction-image-0057.gif" border="0" alt="animated-under-construction-image-0057"/></a>
+ --></body>
+</html>

@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var request = require('request');
+var path = require('path');
 var port = process.env.PORT || 3000;
 var cloudantUserName = 'theastudedondarmstareers';
 var cloudantUserPassword = '94b9f5e859098bda696cfe3e21f76bde9ed0a09c';
@@ -16,6 +17,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+app.use(express.static(path.join(__dirname, 'public')));
 var nodemailer = require('nodemailer');
 //Setup Nodemailer transport, I chose gmail. Create an application-specific password to avoid problems.
 var smtpTrans = nodemailer.createTransport('SMTP', {
@@ -25,6 +27,11 @@ var smtpTrans = nodemailer.createTransport('SMTP', {
       pass: "hiiwwtfuzxzpmxvr" 
     }
 });
+app.get('/', function(req, res) {
+  console.log(__dirname);
+  res.render('index.html');
+});
+
 app.post('/sendmail', function(req, res){
 
   var mailOpts = {
